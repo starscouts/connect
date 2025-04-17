@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Equestria.dev Connect</title>
+    <script>
+        window.fs = require('fs');
+
+        let packages = [];
+        window.repositories = [
+            "file:///Volumes/Projects/connect/repo"
+        ];
+
+        window.root = decodeURIComponent(location.hash.substring(1));
+        if (!fs.existsSync(root + "/config")) fs.mkdirSync(root + "/config");
+        if (!fs.existsSync(root + "/config/repos.txt")) fs.writeFileSync(root + "/config/repos.txt", "# Insert additional repositories to use in this file\n");
+
+        window.repositories.push(...fs.readFileSync(root + "/config/repos.txt").toString().replaceAll("\r\n","\n").split("\n").filter(i => !i.startsWith("#") && i.trim() !== ""));
+
+        for (let repository of repositories) {
+
+        }
+    </script>
+    <style>
+        body, html {
+            margin: 0;
+        }
+
+        * {
+            font-family: system-ui, -apple-system, sans-serif;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: grid; grid-template-rows: 64px 1fr; position: fixed; inset: 0;">
+        <div style="background: black; padding: 12px 16px;">
+            <img alt="Equestria.dev" src="./logo.svg" style="height: 40px;">
+        </div>
+        <div style="background: white;"></div>
+    </div>
+</body>
+</html>

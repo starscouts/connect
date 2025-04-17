@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "electron": "^26.2.4",
+    "electron-packager": "^17.1.2"
+  }
+}
